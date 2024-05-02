@@ -12,6 +12,7 @@
     --body-color: #f5f4f6;
     --list-bg-color: #fffdff;
     --main-text-color: #0c0a0c;
+    --secondary-text-color: #8a898b;
 }
 
 /*
@@ -46,6 +47,10 @@ body {
     color: var(--main-text-color);
 }
 
+.header h2 {
+    color: var(--secondary-text-color);
+    font-weight: 200;
+}
 
 /* =============== TASK LIST ================= */
 
@@ -55,11 +60,14 @@ body {
 
 .task-list {
     list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
 }
 
 .task-list li {
     background-color: var(--list-bg-color);
-    padding: .8rem .5rem;
+    padding: .8rem .5rem .8rem 3rem;
     border-radius: 10px;
     box-shadow: 2px 5px 5px  rgba(224, 218, 218, .6);
     position: relative;
@@ -67,4 +75,30 @@ body {
 
 .task-list input[type="checkbox"] {
     display: none;
+}
+
+.task-list label {
+    cursor: pointer;
+}
+
+.task-list label::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10px;
+    height: 25px;
+    width: 25px;
+    border: solid 1px #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color .3s ease-in-out;
+}
+
+.task-list label.is-done::before  {
+    background-color: #0c0a0c!important;
+}
+
+.task-list label.is-done {
+    text-decoration: line-through;
 }
