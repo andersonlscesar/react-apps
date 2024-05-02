@@ -1,0 +1,70 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/*
+============= VARIÁVEIS LOCAIS ===============
+*/
+
+:root {
+    --body-color: #f5f4f6;
+    --list-bg-color: #fffdff;
+    --main-text-color: #0c0a0c;
+}
+
+/*
+=============== IMPORTAÇÃO DE FONTS ==============
+*/
+
+@font-face {
+    font-family: "Poppins";
+    src: url("../public/Poppins/Poppins-Regular.ttf") format("truetype");
+}
+
+body {
+    background-color: var( --body-color );
+    font-family: "Poppins";
+}
+
+/*
+============ CONTAINER =================
+*/
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+/*
+============== HEADER =============
+*/
+
+.header h1 {
+    color: var(--main-text-color);
+}
+
+
+/* =============== TASK LIST ================= */
+
+.main {
+    padding-top: 2rem;
+}
+
+.task-list {
+    list-style: none;
+}
+
+.task-list li {
+    background-color: var(--list-bg-color);
+    padding: .8rem .5rem;
+    border-radius: 10px;
+    box-shadow: 2px 5px 5px  rgba(224, 218, 218, .6);
+    position: relative;
+}
+
+.task-list input[type="checkbox"] {
+    display: none;
+}
