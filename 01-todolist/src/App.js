@@ -1,6 +1,6 @@
 import Header from "./Components/Header";
 import TaskList from "./Components/TaskList";
-
+import CreateNewTask from "./Components/CreateNewTask";
 
 const taskList = [
 
@@ -26,12 +26,17 @@ const taskList = [
 ];
 
 export default function App() {
+
     return (
 
         <div className="container">
+
             <Header />
             <TaskList data={ taskList }/>
+            <CreateNewTask />
+
         </div>
     
     );
+    
 }

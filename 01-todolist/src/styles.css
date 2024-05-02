@@ -24,6 +24,11 @@
     src: url("../public/Poppins/Poppins-Regular.ttf") format("truetype");
 }
 
+@font-face {
+    font-family: "Poppins-medium";
+    src: url("../public/Poppins/Poppins-Medium.ttf") format("truetype");
+}
+
 body {
     background-color: var( --body-color );
     font-family: "Poppins";
@@ -101,4 +106,25 @@ body {
 
 .task-list label.is-done {
     text-decoration: line-through;
+}
+
+/*================= ADD NEW TASK ==================*/
+
+.add-new-task {
+    position: fixed;
+    bottom: 10%;
+}
+
+.add-new-task button {
+    border: none;
+    background-color: var(--main-text-color);
+    color: white;
+    font-family: "Poppins-medium";
+    padding: 1rem 2rem 1rem 2.5rem;
+    border-radius: 15px;
+    cursor: pointer;
+    background-image: url("../public/img/plus.png");
+    background-repeat: no-repeat;
+    background-size: 17px;
+    background-position: 10% 50%;
 }
