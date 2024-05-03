@@ -30,11 +30,9 @@ export default function App() {
     return (
 
         <div className="container">
-
             <Header />
             <TaskList data={ taskList }/>
             <CreateNewTask />
-
         </div>
     
     );

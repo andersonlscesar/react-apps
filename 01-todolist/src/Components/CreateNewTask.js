@@ -1,32 +1,19 @@
 import { useState } from "react";
 
+import FormTask from "./FormTask";
+
 export default function CreateNewTask() {
 
-    const [ isUp, setIsUp ] = useState( false );
-
-    const bgIcon = { 
-        backgroundImage: `url("./img/${ !isUp ? 'plus.png' : 'minus.png' }")`
-    }
+    const [ show, setShow ] = useState( false );
 
     return (
-
-        <div className="add-new-task">
-            { isUp && <Form />}
-            <button style={ bgIcon } type="button" className="primary-button" onClick={ _ => setIsUp( up => !up ) }>Criar nova tarefa</button>
-        </div>
+        <>
+            { show && <FormTask /> }
+            { !show && <button className="add-new-task-button" type="button" onClick={ _ => setShow( show => !show ) }></button> }
+    
+        </>
 
     );
-
 }
 
 
-function Form() {
-
-    return (
-        <form className="add-new-task-content" >
-            <label>Título da nova tarefa</label>
-            <input type="text" id="new-task"/>
-            <button type="submit" className="secondary-button">Add</button>
-        </form>
-    );
-}
