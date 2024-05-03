@@ -137,6 +137,20 @@ body {
     background-size: 35px;
 }
 
+.cancel-task {
+    position: absolute;
+    height: 30px;
+    left: 98%;
+    width: 30px;
+    background-image: url("../public/img/cancel.png");
+    background-repeat: no-repeat;
+    background-size: 25px;
+    border: none;
+    background-color: transparent;
+    padding: .2rem;
+    cursor: pointer;
+}
+
 .form-task {
     margin-top: .5rem;    
     width: 100%;
@@ -155,5 +169,8 @@ body {
     font-family: "Poppins";
     box-shadow: 2px 5px 5px  rgba(224, 218, 218, .6);
     border-radius: 10px;
+}
 
+.input-container {
+    position: relative;
 }

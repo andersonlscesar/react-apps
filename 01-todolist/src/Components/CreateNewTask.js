@@ -8,7 +8,7 @@ export default function CreateNewTask() {
 
     return (
         <>
-            { show && <FormTask /> }
+            { show && <FormTask onShow={ setShow }/> }
             { !show && <button className="add-new-task-button" type="button" onClick={ _ => setShow( show => !show ) }></button> }
     
         </>
