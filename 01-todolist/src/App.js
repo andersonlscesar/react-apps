@@ -31,20 +31,45 @@ const taskList = [
 export default function App() {
 
     const [ newTask, setNewTask ] = useState("");
+
+    const [ editTaskValue, setEditTaskValue ] = useState("");
+
     const [ taskListState, setTaskListState ] = useState( taskList );
+
+    const [ showFormAddTask, setShowFormAddTask ] = useState( false );
+
 
     function handleAddTask( newTaskObj ) {
         setTaskListState( t => [...t, newTaskObj ] );
+    }
+
+    function handleDeleteTask( id ) {
+        setTaskListState( taskObj => taskObj.filter( t => t.id !== id ) );
+    }
+
+    function handleEditTask( id, taskEdited = {} ) {
+        console.log( id )
     }
 
     return (
 
         <div className="container">
             <Header />
-            <TaskList data={ taskListState }/>
+
+            <TaskList   data={ taskListState }
+                        onDeleteTask={ handleDeleteTask }
+                        showFormAddTask={ showFormAddTask }
+                        onShowFormAddTask={ setShowFormAddTask }
+                        onEditTask={ handleEditTask }
+                        editTaskValue={ editTaskValue }
+                        onEditTaskValue={ setEditTaskValue }
+            />
+
             <CreateNewTask   newTask={ newTask }
                              onTask={ setNewTask }
-                             onAddTask={ handleAddTask }
+                             onAddTask={ handleAddTask }   
+                             showFormAddTask={ showFormAddTask }
+                             onShowFormAddTask={ setShowFormAddTask }                          
             />
         </div>
     

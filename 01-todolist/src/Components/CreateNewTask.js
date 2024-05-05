@@ -2,14 +2,13 @@ import { useState } from "react";
 
 import FormTask from "./FormTask";
 
-export default function CreateNewTask({ newTask, onTask, onAddTask }) {
+export default function CreateNewTask({ newTask, onTask, onAddTask, showFormAddTask, onShowFormAddTask }) {
 
-    const [ show, setShow ] = useState( false );
 
     return (
         <>
-            { show && <FormTask onShow={ setShow } newTask={ newTask } onTask={ onTask } onAddTask={ onAddTask }/> }
-            { !show && <button className="add-new-task-button" type="button" onClick={ _ => setShow( show => !show ) }></button> }    
+            { showFormAddTask && <FormTask onShow={ onShowFormAddTask } newTask={ newTask } onTask={ onTask } onAddTask={ onAddTask }/> }
+            { !showFormAddTask && <button className="add-new-task-button" type="button" onClick={ _ => onShowFormAddTask( show => !show ) }></button> }    
         </>
 
     );

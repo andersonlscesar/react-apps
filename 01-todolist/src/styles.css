@@ -76,6 +76,8 @@ body {
     border-radius: 10px;
     box-shadow: 2px 5px 5px  rgba(224, 218, 218, .6);
     position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .task-list input[type="checkbox"] {
@@ -110,10 +112,36 @@ body {
     text-decoration: line-through;
 }
 
+.actions {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+}
+
+.delete-button, .edit-button {
+    height: 30px;
+    width: 30px;
+    background-size: 26px;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.edit-button {
+    background-image: url("../public/img/editar.png");
+}
+
+.delete-button {
+    background-image: url("../public/img/trash.png");
+
+}
+
 /*================= ADD NEW TASK ==================*/
 
-.add-new-task-button {
-    background-image: url("../public/img/add.png");
+.add-new-task-button, .edit-new-task-button {
     background-position: 50%;
     background-repeat: no-repeat;
     background-size: 30px;
@@ -126,6 +154,14 @@ body {
     background-color: transparent;
     transition: all .2s cubic-bezier(0.39, 0.575, 0.565, 1);
     border-radius: 10px;
+}
+
+.edit-new-task-button {
+    background-image: url("../public/img/edit-form-button.png");
+}
+
+.add-new-task-button {
+    background-image: url("../public/img/add.png");
 }
 
 .add-new-task-button.submit {
