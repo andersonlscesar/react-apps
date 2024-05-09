@@ -29,6 +29,11 @@
     src: url("../public/Poppins/Poppins-Medium.ttf") format("truetype");
 }
 
+@font-face {
+    font-family: "Digital-number";
+    src: url("../public/DigitalNumber/DigitalDisplayRegular-ODEO.ttf") format("truetype");
+}
+
 body {
     background-color: var( --body-color );
     font-family: "Poppins";
@@ -209,4 +214,27 @@ body {
 
 .input-container {
     position: relative;
+}
+
+/*
+STATUS
+*/
+
+.status-container {
+    display: flex;
+    margin-top: 2rem;
+    justify-content: space-between;
+
+}
+
+.status {
+    background-color: var(--list-bg-color);
+    border-radius: 10px;
+    padding: 1rem;
+    min-height: 100px;
+    box-shadow: 2px 5px 5px  rgba(224, 218, 218, .6);
+}
+
+.status__number {
+    font-family: "Digital-number";
 }

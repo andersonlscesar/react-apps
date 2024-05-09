@@ -24,7 +24,7 @@ export default function FormTask( { onShow, newTask, onTask, onAddTask } ) {
         <form className="form-task" onSubmit={ handleSubmit }>
             
             <div className="input-container">
-                <input type="text" placeholder="Descrição da tarefa..." value={ newTask } onChange={ e => onTask( e.target.value ) }/>
+                <input type="text" placeholder="Descrição da tarefa..." value={ newTask } onChange={ e => onTask( e.target.value ) } autoFocus/>
                 <button type="button" title="Cancelar" className="cancel-task" onClick={ _ => onShow( false ) }></button>
             </div>
 

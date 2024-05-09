@@ -7,7 +7,7 @@ export default function Task({ task, onDeleteTask,  onShowFormAddTask }) {
     const [ checkbox, setCheckbox ] = useState( false );
     const [ showEditForm, setShowEditForm ] = useState( false );
 
-    function handleShowEditForm( idTask ) {
+    function handleShowEditForm() {
         
         setShowEditForm( editForm => !editForm );
         onShowFormAddTask( false );

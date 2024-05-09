@@ -3,6 +3,7 @@ import { useState } from "react";
 import Header from "./Components/Header";
 import TaskList from "./Components/TaskList";
 import CreateNewTask from "./Components/CreateNewTask";
+import Status from "./Components/Status";
 
 
 const taskList = [
@@ -52,6 +53,18 @@ export default function App() {
 
         <div className="container">
             <Header />
+
+            <div className="status-container">
+                <Status >
+                    Tarefas Completas
+                </Status>
+
+                <Status >
+                    Tarefas Incompletas
+                </Status>
+            </div>
+
+      
 
             <TaskList   data={ taskListState }
                         onDeleteTask={ handleDeleteTask }
