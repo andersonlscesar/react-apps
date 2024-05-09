@@ -33,11 +33,13 @@ export default function App() {
 
     const [ newTask, setNewTask ] = useState("");
 
-    const [ editTaskValue, setEditTaskValue ] = useState("");
-
     const [ taskListState, setTaskListState ] = useState( taskList );
 
     const [ showFormAddTask, setShowFormAddTask ] = useState( false );
+
+    let completed = taskListState.filter( task => task.isDone ).length;
+
+    let uncompleted = taskListState.filter( task => !task.isDone ).length;
 
 
     function handleAddTask( newTaskObj ) {
@@ -48,6 +50,10 @@ export default function App() {
         setTaskListState( taskObj => taskObj.filter( t => t.id !== id ) );
     }
 
+    function handleToggleList( id ) {
+        setTaskListState( tasks => tasks.map( t => t.id === id ? { ...t, isDone: !t.isDone } : t) );
+    }
+
 
     return (
 
@@ -55,11 +61,11 @@ export default function App() {
             <Header />
 
             <div className="status-container">
-                <Status >
+                <Status quantity={ completed }>
                     Tarefas Completas
                 </Status>
 
-                <Status >
+                <Status quantity={ uncompleted }>
                     Tarefas Incompletas
                 </Status>
             </div>
@@ -70,8 +76,7 @@ export default function App() {
                         onDeleteTask={ handleDeleteTask }
                         showFormAddTask={ showFormAddTask }
                         onShowFormAddTask={ setShowFormAddTask }
-                        editTaskValue={ editTaskValue }
-                        onEditTaskValue={ setEditTaskValue }
+                        onToggleList={ handleToggleList }
             />
 
             <CreateNewTask   newTask={ newTask }

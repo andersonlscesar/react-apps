@@ -30,8 +30,8 @@
 }
 
 @font-face {
-    font-family: "Digital-number";
-    src: url("../public/DigitalNumber/DigitalDisplayRegular-ODEO.ttf") format("truetype");
+    font-family: "Digital";
+    src: url("../public/digital/DigitalDystopia-mL5ma.ttf") format("truetype");
 }
 
 body {
@@ -235,6 +235,7 @@ STATUS
     box-shadow: 2px 5px 5px  rgba(224, 218, 218, .6);
 }
 
-.status__number {
-    font-family: "Digital-number";
+.status .status__number {
+    font-family: "Digital";
+    font-size: 5rem;
 }

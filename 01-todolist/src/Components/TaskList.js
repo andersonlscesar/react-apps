@@ -1,7 +1,7 @@
 
 import Task from "./Task";
 
-export default function TaskList({ data, onDeleteTask, onShowFormAddTask, onEditTask, editTaskValue }) {
+export default function TaskList({ data, onDeleteTask, onShowFormAddTask, onToggleList }) {
 
 
     return (
@@ -15,6 +15,7 @@ export default function TaskList({ data, onDeleteTask, onShowFormAddTask, onEdit
                                             key={ task.id }
                                             onDeleteTask={ onDeleteTask }
                                             onShowFormAddTask={ onShowFormAddTask }
+                                            onToggleList={ onToggleList }
                                       /> )
                 }
 
