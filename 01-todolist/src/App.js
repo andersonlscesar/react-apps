@@ -47,9 +47,6 @@ export default function App() {
         setTaskListState( taskObj => taskObj.filter( t => t.id !== id ) );
     }
 
-    function handleEditTask( id, taskEdited = {} ) {
-        console.log( id )
-    }
 
     return (
 
@@ -60,7 +57,6 @@ export default function App() {
                         onDeleteTask={ handleDeleteTask }
                         showFormAddTask={ showFormAddTask }
                         onShowFormAddTask={ setShowFormAddTask }
-                        onEditTask={ handleEditTask }
                         editTaskValue={ editTaskValue }
                         onEditTaskValue={ setEditTaskValue }
             />

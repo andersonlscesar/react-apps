@@ -2,13 +2,13 @@ import { useState } from "react";
 
 import FormEditTask from "./FormEditTask";
 
-export default function Task({ task, onDeleteTask,  onShowFormAddTask, onEditTask, editTaskValue, onEditTaskValue }) {
+export default function Task({ task, onDeleteTask,  onShowFormAddTask }) {
 
     const [ checkbox, setCheckbox ] = useState( false );
     const [ showEditForm, setShowEditForm ] = useState( false );
 
     function handleShowEditForm( idTask ) {
-        onEditTask( idTask )
+        
         setShowEditForm( editForm => !editForm );
         onShowFormAddTask( false );
     }
@@ -32,7 +32,7 @@ export default function Task({ task, onDeleteTask,  onShowFormAddTask, onEditTas
 
             :
 
-            <FormEditTask onShowEditForm={ setShowEditForm} currentTask={ task } onEditTaskValue={ onEditTaskValue }/> 
+            <FormEditTask onShowEditForm={ setShowEditForm} currentTask={ task }  /> 
 
             }
         </>
