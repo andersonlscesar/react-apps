@@ -57,7 +57,7 @@ export default function App() {
 
     function handleSearchTask( searchValue ) {
         const value = searchValue.toLowerCase();
-        const filteredTasks = taskList.filter(task => task.title.toLowerCase().includes( value ) ?? task );
+        const filteredTasks = taskList.filter(task => task.title.toLowerCase().includes( value ) );
         setTaskListState(filteredTasks);
     }
 
