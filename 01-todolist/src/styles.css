@@ -35,7 +35,7 @@
 }
 
 body {
-    background-color: var( --body-color );
+    background-color: var( --body-color )!important;
     font-family: "Poppins";
 }
 
@@ -54,7 +54,8 @@ body {
 */
 
 .header h1 {
-    color: var(--main-text-color);
+    color: var(--main-text-color)!important;
+    font-size: 36px;
 }
 
 .header h2 {
@@ -223,6 +224,7 @@ STATUS
 .status-container {
     display: flex;
     margin-top: 2rem;
+    margin-bottom: 2rem;
     justify-content: space-between;
 
 }
@@ -233,6 +235,12 @@ STATUS
     padding: 1rem;
     min-height: 100px;
     box-shadow: 2px 5px 5px  rgba(224, 218, 218, .6);
+    min-width: 200px;
+}
+
+.status h2 {
+    font-weight: bold;
+
 }
 
 .status .status__number {

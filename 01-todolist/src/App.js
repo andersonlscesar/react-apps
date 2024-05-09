@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Select, Input } from "@chakra-ui/react";
 
 import Header from "./Components/Header";
 import TaskList from "./Components/TaskList";
@@ -54,6 +55,12 @@ export default function App() {
         setTaskListState( tasks => tasks.map( t => t.id === id ? { ...t, isDone: !t.isDone } : t) );
     }
 
+    function handleSearchTask( searchValue ) {
+        const value = searchValue.toLowerCase();
+        const filteredTasks = taskList.filter(task => task.title.toLowerCase().includes( value ) );
+        setTaskListState(filteredTasks);
+    }
+
 
     return (
 
@@ -62,14 +69,24 @@ export default function App() {
 
             <div className="status-container">
                 <Status quantity={ completed }>
-                    Tarefas Completas
+                    Tarefas Concluídas
                 </Status>
 
                 <Status quantity={ uncompleted }>
-                    Tarefas Incompletas
+                    Tarefas Não Concluídas
                 </Status>
+
+                
             </div>
 
+            <Input placeholder='Buscar tarefa ... ' size='lg' mb={ 2 } variant='filled' onChange={ e => handleSearchTask( e.target.value ) }/>
+
+            <Select placeholder="Ordenar tarefas por ..." size='lg' variant='filled'>
+                <option value='option1'>Padrão</option>
+                <option value='option2'>Decrescente</option>
+                <option value='option3'>Concluído</option>
+                <option value='option3'>Não Concluído</option>
+            </Select> 
       
 
             <TaskList   data={ taskListState }
