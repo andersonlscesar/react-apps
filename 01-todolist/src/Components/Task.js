@@ -8,7 +8,7 @@ export default function Task({ data, onToggleTask }) {
          
         <li>
             <input type="checkbox" id={ data.id } onChange={ _ => setIsTaskDone( !isTaskDone ) } onClick={ _ => onToggleTask( data.id ) }/>
-            <label className={ data.isDone && "is-done" } for={ data.id }>{ data.title }</label>
+            <label className={ data.isDone ? "is-done" : "" } for={ data.id }>{ data.title }</label>
             <div className="actions">
                 <button type="button" title="Editar tarefa" className="edit-button" ></button>
                 <button type="button" title="Deletar tarefa" className="delete-button" ></button>
