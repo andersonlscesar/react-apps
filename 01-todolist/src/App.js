@@ -81,6 +81,10 @@ export default function App() {
         setTasks( tasks.filter( task => task.id !== id ) );
     }
 
+    function handleEditTask( id ) {
+        console.log(id)
+    }
+
     return (
 
         <div className="container">
@@ -107,6 +111,7 @@ export default function App() {
                     tasks.map( task => <Task data={ task }
                         o                    onToggleTask={ handleToggleTask } 
                                              onDeleteTask={ handleDeleteTask }
+                                             onEditTask={ handleEditTask }
                                              key={ task.id }/> )
                 }
 
