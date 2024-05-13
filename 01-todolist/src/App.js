@@ -43,12 +43,32 @@ export default function App() {
         setTasks( tasks.map( task => task.id === id ? { ...task, isDone: !task.isDone } : task ) )
     }
 
+    /**
+     * Retorna a quantidade de tarefas concluídas
+     * @returns { Number }
+     */
+
     function completedTask() {
         return tasks.filter( task => task.isDone ).length;
     }
 
+    /**
+     * Retorna a quantidade de tarefas incompletas
+     * @returns { Number }
+     */
+
     function uncompletedTask() {
         return tasks.filter( task => !task.isDone ).length;
+    }
+
+    /**
+     * Função responsável por add nova tarefa
+     * @param { Object } newTask
+     *  
+     */
+
+    function handleAddTask( newTask ) {
+        setTasks( tasks => [ ...tasks, newTask ] );
     }
 
     return (
@@ -81,8 +101,8 @@ export default function App() {
 
             </TaskList>
 
-            <CreateNewTask />
-            
+            <CreateNewTask onAddTask={ handleAddTask }/>
+
         </div>
     
     );
