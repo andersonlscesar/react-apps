@@ -35,7 +35,13 @@ export default function App() {
 
     const [ tasks, setTasks ] = useState( taskList ); // Gerenciando estado das tarefas
 
-    console.log( tasks )
+    /*
+    Função responsável por marcar uma tarefa como concluída / não concluída
+    */
+
+    function handleToggleTask( id ) {
+        setTasks( tasks.map( task => task.id === id ? { ...task, isDone: !task.isDone } : task ))
+    }
 
     return (
 
@@ -45,11 +51,11 @@ export default function App() {
 
             <div className="status-container">
 
-                <Status>
+                <Status data={ tasks }>
                     Tarefas Concluídas
                 </Status>
 
-                <Status >
+                <Status data={ tasks }>
                     Tarefas Não Concluídas
                 </Status>  
 
@@ -61,6 +67,7 @@ export default function App() {
 
                 {
                     tasks.map( task => <Task data={ task }
+                        o                    onToggleTask={ handleToggleTask } 
                                              key={ task.id }/> )
                 }
 
