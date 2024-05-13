@@ -35,7 +35,7 @@ export default function App() {
 
     const [ taskListState, setTaskListState ] = useState( taskList );
 
-    const [ showFormAddTask, setShowFormAddTask ] = useState( false );
+    const [ showFormAddTask, setShowFormAddTask ] = useState( false );    
 
     let completed = taskListState.filter( task => task.isDone ).length;
 
@@ -53,6 +53,8 @@ export default function App() {
     function handleToggleList( id ) {
         setTaskListState( tasks => tasks.map( t => t.id === id ? { ...t, isDone: !t.isDone } : t) );
     }
+
+
 
 
 
@@ -78,14 +80,14 @@ export default function App() {
                         onDeleteTask={ handleDeleteTask }
                         showFormAddTask={ showFormAddTask }
                         onShowFormAddTask={ setShowFormAddTask }
-                        onToggleList={ handleToggleList }
+                        onToggleList={ handleToggleList }      
             />
 
             <CreateNewTask   newTask={ newTask }
                              onTask={ setNewTask }
                              onAddTask={ handleAddTask }   
                              showFormAddTask={ showFormAddTask }
-                             onShowFormAddTask={ setShowFormAddTask }                          
+                             onShowFormAddTask={setShowFormAddTask }                          
             />
         </div>
     
