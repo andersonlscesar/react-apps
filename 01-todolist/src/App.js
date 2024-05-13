@@ -40,7 +40,15 @@ export default function App() {
     */
 
     function handleToggleTask( id ) {
-        setTasks( tasks.map( task => task.id === id ? { ...task, isDone: !task.isDone } : task ))
+        setTasks( tasks.map( task => task.id === id ? { ...task, isDone: !task.isDone } : task ) )
+    }
+
+    function completedTask() {
+        return tasks.filter( task => task.isDone ).length;
+    }
+
+    function uncompletedTask() {
+        return tasks.filter( task => !task.isDone ).length;
     }
 
     return (
@@ -51,11 +59,11 @@ export default function App() {
 
             <div className="status-container">
 
-                <Status data={ tasks }>
+                <Status amount={ completedTask }>
                     Tarefas Concluídas
                 </Status>
 
-                <Status data={ tasks }>
+                <Status amount={ uncompletedTask }>
                     Tarefas Não Concluídas
                 </Status>  
 
