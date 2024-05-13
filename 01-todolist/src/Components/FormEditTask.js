@@ -1,27 +1,16 @@
 import { useState } from "react";
 
-export default function FormEditTask({ onShowEditForm, currentTask }) {
+export default function FormEditTask({}) {
 
-    const [ editedTask, setEditedTask ] = useState( currentTask.title );
-
-    function handleSubmit( e ) {
-        e.preventDefault();
-        if ( !editedTask ) return;        
-        handleEditTask( currentTask );
-        onShowEditForm( false );
-    } 
-
-    function handleEditTask( taskObj ) {
-        taskObj.title = editedTask;
-    }
+  
 
     return (
 
-        <form className="form-task" onSubmit={ handleSubmit }>
+        <form className="form-task">
             
             <div className="input-container">
-                <input type="text" placeholder="Nova descrição para a tarefa..." value={ editedTask } onChange={ e => setEditedTask( e.target.value ) } autoFocus/>
-                <button type="button" title="Cancelar" className="cancel-task" onClick={ _ => onShowEditForm( false ) }></button>
+                <input type="text" placeholder="Nova descrição para a tarefa..."/>
+                <button type="button" title="Cancelar" className="cancel-task"></button>
             </div>
             <button className="edit-new-task-button submit" type="submit" title="Editar tarefa"></button>
 

@@ -1,31 +1,13 @@
 
-export default function FormTask( { onShow, newTask, onTask, onAddTask } ) {
-
-    function handleSubmit( e ) {
-
-        e.preventDefault();
-
-        if ( !newTask ) return;
-
-        const id = crypto.randomUUID();
-
-        const newTaskObj = {
-            id, 
-            title: newTask, 
-            isDone: false
-        };
-
-        onAddTask( newTaskObj );
-        onTask("");
-    }
+export default function FormTask( ) {
 
     return (
 
-        <form className="form-task" onSubmit={ handleSubmit }>
+        <form className="form-task">
             
             <div className="input-container">
-                <input type="text" placeholder="Descrição da tarefa..." value={ newTask } onChange={ e => onTask( e.target.value ) } autoFocus/>
-                <button type="button" title="Cancelar" className="cancel-task" onClick={ _ => onShow( false ) }></button>
+                <input type="text" placeholder="Descrição da tarefa..." />
+                <button type="button" title="Cancelar" className="cancel-task"></button>
             </div>
 
             <button className="add-new-task-button submit" type="submit" title="enviar tarefa"></button>

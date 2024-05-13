@@ -31,30 +31,6 @@ const taskList = [
 
 export default function App() {
 
-    const [ newTask, setNewTask ] = useState("");
-
-    const [ taskListState, setTaskListState ] = useState( taskList );
-
-    const [ showFormAddTask, setShowFormAddTask ] = useState( false );    
-
-    let completed = taskListState.filter( task => task.isDone ).length;
-
-    let uncompleted = taskListState.filter( task => !task.isDone ).length;
-
-
-    function handleAddTask( newTaskObj ) {
-        setTaskListState( t => [ ...t, newTaskObj ] );
-    }
-
-    function handleDeleteTask( id ) {
-        setTaskListState( taskObj => taskObj.filter( t => t.id !== id ) );
-    }
-
-    function handleToggleList( id ) {
-        setTaskListState( tasks => tasks.map( t => t.id === id ? { ...t, isDone: !t.isDone } : t) );
-    }
-
-
 
 
 
@@ -64,11 +40,11 @@ export default function App() {
             <Header />
 
             <div className="status-container">
-                <Status quantity={ completed }>
+                <Status>
                     Tarefas Concluídas
                 </Status>
 
-                <Status quantity={ uncompleted }>
+                <Status >
                     Tarefas Não Concluídas
                 </Status>
 
@@ -76,18 +52,10 @@ export default function App() {
             </div>
       
 
-            <TaskList   data={ taskListState }
-                        onDeleteTask={ handleDeleteTask }
-                        showFormAddTask={ showFormAddTask }
-                        onShowFormAddTask={ setShowFormAddTask }
-                        onToggleList={ handleToggleList }      
+            <TaskList  
             />
 
-            <CreateNewTask   newTask={ newTask }
-                             onTask={ setNewTask }
-                             onAddTask={ handleAddTask }   
-                             showFormAddTask={ showFormAddTask }
-                             onShowFormAddTask={setShowFormAddTask }                          
+            <CreateNewTask                          
             />
         </div>
     
