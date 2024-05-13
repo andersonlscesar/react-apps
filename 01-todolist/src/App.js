@@ -4,6 +4,8 @@ import Header from "./Components/Header";
 import TaskList from "./Components/TaskList";
 import CreateNewTask from "./Components/CreateNewTask";
 import Status from "./Components/Status";
+import Task from "./Components/Task";
+import Filter from "./Components/Filter";
 
 
 const taskList = [
@@ -31,32 +33,40 @@ const taskList = [
 
 export default function App() {
 
+    const [ tasks, setTasks ] = useState( taskList ); // Gerenciando estado das tarefas
 
-
+    console.log( tasks )
 
     return (
 
         <div className="container">
+
             <Header />
 
             <div className="status-container">
+
                 <Status>
                     Tarefas Concluídas
                 </Status>
 
                 <Status >
                     Tarefas Não Concluídas
-                </Status>
+                </Status>  
 
-                
             </div>
-      
 
-            <TaskList  
-            />
+            <Filter />
 
-            <CreateNewTask                          
-            />
+            <TaskList>
+
+                {
+                    tasks.map( task => <Task data={ task }
+                                             key={ task.id }/> )
+                }
+
+            </TaskList>
+
+            <CreateNewTask />
         </div>
     
     );
