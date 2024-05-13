@@ -71,6 +71,16 @@ export default function App() {
         setTasks( tasks => [ ...tasks, newTask ] );
     }
 
+    /**
+     * Funçção responsável por excluir uma tarefa
+     * @param { String | Number } id
+     *  
+     */
+
+    function handleDeleteTask( id ) {
+        setTasks( tasks.filter( task => task.id !== id ) );
+    }
+
     return (
 
         <div className="container">
@@ -96,6 +106,7 @@ export default function App() {
                 {
                     tasks.map( task => <Task data={ task }
                         o                    onToggleTask={ handleToggleTask } 
+                                             onDeleteTask={ handleDeleteTask }
                                              key={ task.id }/> )
                 }
 

@@ -1,6 +1,14 @@
 import { useState } from "react";
 
-export default function Task({ data, onToggleTask }) {
+/**
+ * 
+ * @param { Array } data - Array com todas as tarefas
+ * @param { Function } onToggleTask - Função do componente App que altera o status da tarefa
+ * @param { Function } onDeleteTask - Funçção do  componente App que deleta uma tarefa
+ * @returns 
+ */
+
+export default function Task({ data, onToggleTask, onDeleteTask }) {
 
     const [ isTaskDone, setIsTaskDone ] = useState( false ); // Estado da tarefa: concluída / não concluída
 
@@ -11,7 +19,7 @@ export default function Task({ data, onToggleTask }) {
             <label className={ data.isDone ? "is-done" : "" } for={ data.id }>{ data.title }</label>
             <div className="actions">
                 <button type="button" title="Editar tarefa" className="edit-button" ></button>
-                <button type="button" title="Deletar tarefa" className="delete-button" ></button>
+                <button type="button" title="Deletar tarefa" className="delete-button" onClick={ _ => onDeleteTask( data.id ) }></button>
             </div>
         </li>
     );
