@@ -14,6 +14,7 @@ export default function FormTask({ onShowForm, onAddTask } ) {
 
     function handleSubmit( e ) {
         e.preventDefault();
+        if ( !insertTask || insertTask.trim() === "" ) return;
         const newTask = { id: crypto.randomUUID(), title: insertTask, isDone: false }; // novo obj para ser adicionado a lista de tarefas
         onAddTask( newTask );  
         setNewInsertTask( "" );      

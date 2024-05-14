@@ -35,6 +35,9 @@ export default function App() {
 
     const [ tasks, setTasks ] = useState( taskList ); // Gerenciando estado das tarefas
 
+    const [ search, setSearch ] = useState( "" ); // Gerenciando o estado do input de pesquisa
+
+
     /*
     Função responsável por marcar uma tarefa como concluída / não concluída
     */
@@ -109,7 +112,7 @@ export default function App() {
 
             </div>
 
-            <Filter />
+            <Filter search={ search } onSearch={ setSearch }/>
 
             <TaskList>
 
@@ -118,6 +121,7 @@ export default function App() {
                         o                    onToggleTask={ handleToggleTask } 
                                              onDeleteTask={ handleDeleteTask }
                                              onEditTask={ handleEditTask }
+                                             search={ search }
                                              key={ task.id }/> )
                 }
 

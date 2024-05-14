@@ -13,6 +13,7 @@ export default function FormEditTask({ onShowEditForm, data, onEditTask }) {
 
     function handleSubmit( e ) {
         e.preventDefault();
+        if ( !taskValue || taskValue.trim() === "") return;
         onEditTask( data.id, taskValue );
         onShowEditForm( false );
     }
