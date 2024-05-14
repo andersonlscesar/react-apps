@@ -13,7 +13,7 @@ import FormEditTask from "./FormEditTask";
 
 export default function Task({ data, onToggleTask, onDeleteTask, onEditTask, search }) {
 
-    const [ isTaskDone, setIsTaskDone ] = useState( false ); // Estado da tarefa: concluída / não concluída
+    const [ isTaskDone, setIsTaskDone ]     = useState( false ); // Estado da tarefa: concluída / não concluída
     const [ showEditForm, setShowEditForm ] = useState( false ); // Verifica se o form de edição deve ou não aparecer
     
 
@@ -50,7 +50,7 @@ function ItemTask({ data, isTaskDone,  onIsTaskDone, onToggleTask, onShowEditFor
 
     return (
 
-        // Caso o valor coincida com o que está na lista de tarefas, o componente Task será renderixado
+        // Caso o valor coincida com o que está na lista de tarefas, o componente Task será renderizado
         <>
           {  
           
