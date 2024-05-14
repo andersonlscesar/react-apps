@@ -22,7 +22,7 @@ export default function Task({ data, onToggleTask, onDeleteTask, onEditTask }) {
 
                 ?
 
-                <FormEditTask onShowEditForm={ setShowEditForm } data={ data }/>
+                <FormEditTask onShowEditForm={ setShowEditForm } data={ data } onEditTask={ onEditTask }/>
 
                 :
 

@@ -81,8 +81,14 @@ export default function App() {
         setTasks( tasks.filter( task => task.id !== id ) );
     }
 
-    function handleEditTask( id ) {
-        console.log(id)
+    /**
+     * Função responsável por autializar os itens da lista de tarefa
+     * @param { String | Number } id 
+     * @param { String } newValue 
+     */
+
+    function handleEditTask( id, newValue ) {
+        setTasks( tasks.map( task => task.id === id ? { ...task, title: newValue } : task ) );
     }
 
     return (
