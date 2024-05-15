@@ -247,3 +247,10 @@ body {
     font-family: "Digital";
     font-size: 5rem;
 }
+
+.warning {
+    font-size: 1.6rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

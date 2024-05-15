@@ -126,13 +126,11 @@ export default function App() {
 
             </div>
 
-            <Filter search={ search } 
+           { sortedBy.length > 0 && <Filter search={ search } 
                     onSearch={ setSearch }
                     sortBy={ sortBy }
                     onSortBy={ setSortBy }
-                    
-                    
-            />
+            />}
 
             <TaskList>
 
@@ -146,6 +144,8 @@ export default function App() {
                 }
 
             </TaskList>
+
+            { !sortedBy.length && <span className="warning"> Ainda não há tarefas a serem cumpridas</span>}
 
             <CreateNewTask onAddTask={ handleAddTask }/>
 
