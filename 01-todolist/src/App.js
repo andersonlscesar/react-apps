@@ -4,6 +4,8 @@ import Header from "./Components/Header";
 import TaskList from "./Components/TaskList";
 import CreateNewTask from "./Components/CreateNewTask";
 import Status from "./Components/Status";
+import Task from "./Components/Task";
+import Filter from "./Components/Filter";
 
 
 const taskList = [
@@ -31,62 +33,122 @@ const taskList = [
 
 export default function App() {
 
-    const [ newTask, setNewTask ] = useState("");
+    const [ tasks, setTasks ] = useState( taskList ); // Gerenciando estado das tarefas
 
-    const [ taskListState, setTaskListState ] = useState( taskList );
+    const [ search, setSearch ] = useState( "" ); // Gerenciando o estado do input de pesquisa
 
-    const [ showFormAddTask, setShowFormAddTask ] = useState( false );
+    const [ sortBy, setSortBy ] = useState( "" );
 
-    let completed = taskListState.filter( task => task.isDone ).length;
+    let sortedBy;
 
-    let uncompleted = taskListState.filter( task => !task.isDone ).length;
+    if ( sortBy === "" || sortBy === "padrao") sortedBy = tasks;
 
+    if ( sortBy === "alfa" ) sortedBy = tasks.slice().sort( (a ,b) => a.title.localeCompare( b.title ) );
 
-    function handleAddTask( newTaskObj ) {
-        setTaskListState( t => [ ...t, newTaskObj ] );
+    if ( sortBy === "concluido" ) sortedBy = tasks.slice().sort( (a, b) => Number(b.isDone) - Number(a.isDone) );
+
+    if ( sortBy === "naoconcluido" ) sortedBy = tasks.slice().sort( (a, b) => Number(a.isDone) - Number(b.isDone) );
+
+    /*
+    Função responsável por marcar uma tarefa como concluída / não concluída
+    */
+
+    function handleToggleTask( id ) {
+        setTasks( tasks.map( task => task.id === id ? { ...task, isDone: !task.isDone } : task ) )
     }
+
+    /**
+     * Retorna a quantidade de tarefas concluídas
+     * @returns { Number }
+     */
+
+    function completedTask() {
+        return tasks.filter( task => task.isDone ).length;
+    }
+
+    /**
+     * Retorna a quantidade de tarefas incompletas
+     * @returns { Number }
+     */
+
+    function uncompletedTask() {
+        return tasks.filter( task => !task.isDone ).length;
+    }
+
+    /**
+     * Função responsável por add nova tarefa
+     * @param { Object } newTask
+     *  
+     */
+
+    function handleAddTask( newTask ) {
+        setTasks( tasks => [ ...tasks, newTask ] );
+    }
+
+    /**
+     * Funçção responsável por excluir uma tarefa
+     * @param { String | Number } id
+     *  
+     */
 
     function handleDeleteTask( id ) {
-        setTaskListState( taskObj => taskObj.filter( t => t.id !== id ) );
+        setTasks( tasks.filter( task => task.id !== id ) );
     }
 
-    function handleToggleList( id ) {
-        setTaskListState( tasks => tasks.map( t => t.id === id ? { ...t, isDone: !t.isDone } : t) );
+    /**
+     * Função responsável por autializar os itens da lista de tarefa
+     * @param { String | Number } id 
+     * @param { String } newValue 
+     */
+
+    function handleEditTask( id, newValue ) {
+        setTasks( tasks.map( task => task.id === id ? { ...task, title: newValue } : task ) );
     }
+
 
 
 
     return (
 
         <div className="container">
+
             <Header />
 
             <div className="status-container">
-                <Status quantity={ completed }>
+
+                <Status amount={ completedTask }>
                     Tarefas Concluídas
                 </Status>
 
-                <Status quantity={ uncompleted }>
+                <Status amount={ uncompletedTask }>
                     Tarefas Não Concluídas
-                </Status>
+                </Status>  
 
-                
             </div>
-      
 
-            <TaskList   data={ taskListState }
-                        onDeleteTask={ handleDeleteTask }
-                        showFormAddTask={ showFormAddTask }
-                        onShowFormAddTask={ setShowFormAddTask }
-                        onToggleList={ handleToggleList }
-            />
+           { sortedBy.length > 0 && <Filter search={ search } 
+                    onSearch={ setSearch }
+                    sortBy={ sortBy }
+                    onSortBy={ setSortBy }
+            />}
 
-            <CreateNewTask   newTask={ newTask }
-                             onTask={ setNewTask }
-                             onAddTask={ handleAddTask }   
-                             showFormAddTask={ showFormAddTask }
-                             onShowFormAddTask={ setShowFormAddTask }                          
-            />
+            <TaskList>
+
+                {
+                    sortedBy.map( task => <Task data={ task }
+                                             onToggleTask={ handleToggleTask } 
+                                             onDeleteTask={ handleDeleteTask }
+                                             onEditTask={ handleEditTask }
+                                             search={ search }
+                                             key={ task.id }/> )
+                }
+
+            </TaskList>
+
+            { !sortedBy.length && <span className="warning"> Ainda não há tarefas a serem cumpridas</span>}
+
+            <CreateNewTask onAddTask={ handleAddTask }/>
+
         </div>
     
     );
